@@ -4,7 +4,7 @@ require('dotenv').config();
 
 const CLIENT_ID = process.env.YOUTUBE_CLIENT_ID;
 const CLIENT_SECRET = process.env.YOUTUBE_CLIENT_SECRET;
-const REDIRECT_URI = process.env.YOUTUBE_REDIRECT_URI || 'http://localhost:3000'; // Or your local redirect URI
+const REDIRECT_URI = process.env.YOUTUBE_REDIRECT_URI || 'http://localhost:3000'; 
 
 const oauth2Client = new OAuth2Client(
   CLIENT_ID,
@@ -12,14 +12,14 @@ const oauth2Client = new OAuth2Client(
   REDIRECT_URI
 );
 
-// Replace with the scope your application needs
+
 const scopes = ['https://www.googleapis.com/auth/youtube.readonly'];
 
 async function getNewRefreshToken() {
   const authorizeUrl = oauth2Client.generateAuthUrl({
     access_type: 'offline', // This is crucial for getting a refresh token
     scope: scopes,
-    prompt: 'consent', // Ensures user is prompted for consent, even if already granted
+    prompt: 'consent',
   });
 
   console.log('Authorize this app by visiting this URL:');
